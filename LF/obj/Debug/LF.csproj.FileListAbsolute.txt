@@ -7,3 +7,12 @@ c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\LFStats.p
 c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\obj\Debug\LF.csprojResolveAssemblyReference.cache
 c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\obj\Debug\LF.exe
 c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\obj\Debug\LF.pdb
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LF.exe.config
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\obj\Debug\LF.exe
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\obj\Debug\LF.pdb
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\obj\Debug\LF.csprojResolveAssemblyReference.cache
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LF.exe
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LF.pdb
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LFStats.dll
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\MySql.Data.dll
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LFStats.pdb
