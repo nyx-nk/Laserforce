@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LF", "LF\LF.csproj", "{06562CD4-6352-4B63-845D-0467E67D9BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LFStats", "LFStats\LFStats.csproj", "{884118B2-741E-42EA-B8D7-4445CCC5375D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06562CD4-6352-4B63-845D-0467E67D9BF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06562CD4-6352-4B63-845D-0467E67D9BF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06562CD4-6352-4B63-845D-0467E67D9BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06562CD4-6352-4B63-845D-0467E67D9BF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

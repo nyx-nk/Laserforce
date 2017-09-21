@@ -1,0 +1,9 @@
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\LF.exe.config
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\LF.exe
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\LF.pdb
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\LFStats.dll
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\MySql.Data.dll
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\bin\Debug\LFStats.pdb
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\obj\Debug\LF.csprojResolveAssemblyReference.cache
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\obj\Debug\LF.exe
+c:\users\gholmes\documents\visual studio 2015\Projects\LF\LF\obj\Debug\LF.pdb
