@@ -1,13 +1,30 @@
-﻿using LFStats;
+﻿using AKLStats;
+using LFStats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LF
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
+        {
+            //TestStatsDatabase();
+            //TestLocalDatabase();
+
+            var synchroniser = new StatsSynchroniser(16);
+            synchroniser.Update();
+
+            Console.Write("Done");
+
+            Console.ReadKey();
+        }
+
+
+        #region Test Methods
+
+        private static void TestStatsDatabase()
         {
             var statsDatabase = new MySqlDatabase();
             statsDatabase.OpenConnection();
@@ -25,7 +42,24 @@ namespace LF
                 myScores = statsDatabase.GetSpecificPlayerGameScores(16, dmihawk.Id);
             }
 
-            Console.ReadKey();
+            statsDatabase.CloseConnection();
         }
+
+        private static void TestLocalDatabase()
+        {
+            var localDatabase = new SqliteDatabase();
+            localDatabase.Path = "..\\..\\stats.db";
+
+            localDatabase.OpenConnection();
+
+            var testPlayers = new List<Player>();
+            testPlayers.Add(new Player() { Id = 1, Name = "Test" });
+
+            localDatabase.AddPlayers(testPlayers);
+
+            localDatabase.CloseConnection();
+        }
+
+        #endregion Test Methods
     }
 }
