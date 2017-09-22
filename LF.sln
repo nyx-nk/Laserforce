@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LF", "LF\LF.csproj", "{0656
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LFStats", "LFStats\LFStats.csproj", "{884118B2-741E-42EA-B8D7-4445CCC5375D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AKLStats", "AKLStats\AKLStats.csproj", "{79DBDB8B-E711-4889-8AE9-886A43266216}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{884118B2-741E-42EA-B8D7-4445CCC5375D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79DBDB8B-E711-4889-8AE9-886A43266216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79DBDB8B-E711-4889-8AE9-886A43266216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79DBDB8B-E711-4889-8AE9-886A43266216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79DBDB8B-E711-4889-8AE9-886A43266216}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -41,10 +41,10 @@ WHERE center_id = {0}
 
         public MySqlDatabase()
         {
-            Server = ConfigurationManager.AppSettings["server"];
-            Database = ConfigurationManager.AppSettings["database"];
-            Username = ConfigurationManager.AppSettings["username"];
-            Password = ConfigurationManager.AppSettings["password"];
+            Server = ConfigurationManager.AppSettings["MySqlServer"];
+            Database = ConfigurationManager.AppSettings["MySqlDatabase"];
+            Username = ConfigurationManager.AppSettings["MySqlUsername"];
+            Password = ConfigurationManager.AppSettings["MySqlPassword"];
         }
 
         public MySqlDatabase(string server, string database, string username, string password)
