@@ -1,13 +1,16 @@
 """
 Laserforce Space Marines 5
-Statistics Miner
+Fancy Machine Learning-based Stat Miner
+Version: 1.0 (23/09/2017)
+Author: Andrew Chen (andrewc6126@gmail.com)
+
 - Uses a SVM to predict if a team will win or lose if a certain class has certain stats
 - Does not model the team effects (i.e. what happens when two particular players are together in particular positions)
 - Does not model team size effects (i.e. what happens if the teams are different sizes, or there are more or fewer players)
 - Does not model the opponent effects (i.e. what happens when a particular team plays against a particular other team)
 - Does not model intangibles (duh, because we don't have stats for that)
 
-Dependecies:
+Dependencies:
 - scikit-learn module (called sklearn below because imported Python modules can't have - in their names)
 """
 
