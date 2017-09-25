@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePlayer.cs" />
+    <Compile Include="SingleGame.cs" />
     <Compile Include="SqliteDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Balancer\Laserforce Members Night.csproj">
+      <Project>{E7DA7013-B3A6-409A-A183-45FD9B647784}</Project>
+      <Name>Laserforce Members Night</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LFStats\LFStats.csproj">
       <Project>{884118B2-741E-42EA-B8D7-4445CCC5375D}</Project>
       <Name>LFStats</Name>

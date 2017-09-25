@@ -18,15 +18,23 @@ namespace LF
             switch (input.Key)
             {
                 case ConsoleKey.Oem1:
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
                     return MenuSelection.SyncLocal;
 
                 case ConsoleKey.Oem2:
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
                     return MenuSelection.SyncGlobal;
 
                 case ConsoleKey.Oem3:
+                case ConsoleKey.D3:
+                case ConsoleKey.NumPad3:
                     return MenuSelection.ExecSvm;
 
                 case ConsoleKey.Oem4:
+                case ConsoleKey.D4:
+                case ConsoleKey.NumPad4:
                     return MenuSelection.Balancer;
 
                 default:

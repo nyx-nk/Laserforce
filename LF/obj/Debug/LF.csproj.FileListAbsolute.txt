@@ -16,9 +16,7 @@ C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debu
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LFStats.dll
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\MySql.Data.dll
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LFStats.pdb
-C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\AKLStats.dll
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\System.Data.SQLite.dll
-C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\AKLStats.pdb
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\System.Data.SQLite.xml
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\EntityFramework.dll
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\EntityFramework.SqlServer.dll
@@ -49,3 +47,5 @@ H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\System.Data.
 H:\Laserforce\Programming\Balancing Program\Laserforce\LF\obj\Debug\LF.csprojResolveAssemblyReference.cache
 H:\Laserforce\Programming\Balancing Program\Laserforce\LF\obj\Debug\LF.exe
 H:\Laserforce\Programming\Balancing Program\Laserforce\LF\obj\Debug\LF.pdb
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LocalStats.dll
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\LocalStats.pdb

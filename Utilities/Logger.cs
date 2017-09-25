@@ -8,6 +8,7 @@ namespace Utilities
         {
             // TODO: Actual error logging
             Console.WriteLine(message);
+            Console.ReadKey();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Utilities;
 
 namespace LF
 {
@@ -26,7 +27,7 @@ namespace LF
                         break;
 
                     case MenuSelection.ExecSvm:
-                        // TODO: Add IronPython
+                        Python.ExecuteScript(@"C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\Analysis\svm_analyse.py");
                         break;
 
                     case MenuSelection.Balancer:

@@ -1,4 +1,5 @@
-﻿using LFStats;
+﻿using Laserforce;
+using LFStats;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -29,6 +30,15 @@ ShotThreeHit, ElimOtherTeam, ElimTeam, OwnNukeCancels, ShotOpponents, ShotTeam, 
 BasesDestroyed, Accuracy, MvpPoints, SpecialEarned, SpecialSpent, GameId, PlayerId)
 VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}, {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20},
 {21}, {22}, {23}, {24}, {25}, {26}, {27}, {28}, {29}, {30}, {31}, {32}, {33}, {34}, {35}, {36}, {37})";
+
+        private const string _getAllPlayerStatsForGameSql = @"
+SELECT pgs.Id, pgs.PlayerName, pgs.Team, pgs.Position, pgs.ShotsHit, pgs.ShotsFired, pgs.TimesZapped, pgs.TimesMissiled, pgs.MissileHits,
+    pgs.NukesActivated, pgs.NukesDetonated, pgs.NukeCancelled, pgs.MedicHits, pgs.OwnMedicHits, pgs.MedicNukes, pgs.ScoutRapidFires,
+    pgs.LivesBoosts, pgs.AmmoBoosts, pgs.LivesLeft, pgs.Score, pgs.Penalties, pgs.ShotThreeHit, pgs.ElimOtherTeam, pgs.ElimTeam,
+    pgs.OwnNukeCancels, pgs.ShotOpponents, pgs.ShotTeam, pgs.MissiledOpponent, pgs.MissiledTeam, pgs.Resupplies, pgs.Rank,
+    pgs.BasesDestroyed, pgs.Accuracy, pgs.MvpPoints, pgs.SpecialEarned, pgs.SpecialSpent
+FROM PlayerGameScore pgs
+WHERE pgs.GameId = {0}";
 
         #endregion Sql
 
@@ -174,6 +184,111 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
             }
         }
 
+        public SingleGame GetGame(int id)
+        {
+            if (Connection == null)
+            {
+                Connection.Open();
+            }
+
+            var query = string.Format(_getAllPlayerStatsForGameSql, id);
+
+            var game = new SingleGame();
+
+            try
+            {
+                var command = new SQLiteCommand(query, Connection);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var player = new GamePlayer();
+                        player.Id = (int)reader["Id"];
+                        player.Name = reader["PlayerName"].ToString();
+                        player.Position = ConvertPositionToRole(reader["Position"].ToString());
+                        player.ShotsHit = (int)reader["ShotsHit"];
+                        player.ShotsFired = (int)reader["ShotsFired"];
+                        player.TimesZapped = (int)reader["TimesZapped"];
+                        player.TimesMissiled = (int)reader["TimesMissiled"];
+                        player.MissileHits = (int)reader["MissileHits"];
+                        player.NukesActivated = (int)reader["NukesActivated"];
+                        player.NukesDetonated = (int)reader["NukesDetonated"];
+                        player.NukesCancelled = (int)reader["NukeCancelled"];
+                        player.MedicHits = (int)reader["MedicHits"];
+                        player.OwnMedicHits = (int)reader["OwnMedicHits"];
+                        player.MedicNukes = (int)reader["MedicNukes"];
+                        player.ScoutRapidFires = (int)reader["ScoutRapidFires"];
+                        player.LivesBoosts = (int)reader["LivesBoosts"];
+                        player.AmmoBoosts = (int)reader["AmmoBoosts"];
+                        player.LivesLeft = (int)reader["LivesLeft"];
+                        player.Score = (int)reader["Score"];
+                        player.Penalties = (int)reader["Penalties"];
+                        player.ShotThreeHit = (int)reader["ShotThreeHit"];
+                        player.ElimOtherTeam = (int)reader["ElimOtherTeam"];
+                        player.ElimTeam = (int)reader["ElimTeam"];
+                        player.OwnNukeCancels = (int)reader["OwnNukeCancels"];
+                        player.ShotOpponents = (int)reader["ShotOpponents"];
+                        player.ShotTeam = (int)reader["ShotTeam"];
+                        player.MissiledOpponent = (int)reader["MissiledOpponent"];
+                        player.MissiledTeam = (int)reader["MissileTeam"];
+                        player.Resupplies = (int)reader["Resupplies"];
+                        player.Rank = (int)reader["Rank"];
+                        player.BasesDestroyed = (int)reader["BasesDestroyed"];
+                        player.Accuracy = (decimal)reader["Accuracy"];
+                        player.MvpPoints = (decimal)reader["MvpPoints"];
+                        player.SpecialEarned = (int)reader["SpecialEarned"];
+                        player.SpecialSpent = (int)reader["SpecialSpent"];
+
+                        var team = reader["Team"].ToString().ToLower();
+
+                        if (team == "red")
+                        {
+                            game.RedTeam.Add(player);
+                        }
+                        else if (team == "green")
+                        {
+                            game.GreenTeam.Add(player);
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException($"Unknown team: {team}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+            }
+
+            return game;
+        }
+
         #endregion Methods
+
+        private SpaceMarines5Role ConvertPositionToRole(string position)
+        {
+            switch (position.ToLower())
+            {
+                case "commander":
+                    return SpaceMarines5Role.Commander;
+
+                case "heavy weapons":
+                    return SpaceMarines5Role.Heavy;
+
+                case "scout":
+                    return SpaceMarines5Role.Scout;
+
+                case "ammo carrier":
+                    return SpaceMarines5Role.Ammo;
+
+                case "medic":
+                    return SpaceMarines5Role.Medic;
+
+                default:
+                    throw new InvalidOperationException($"Unknown position {position}");
+            }
+        }
     }
 }
