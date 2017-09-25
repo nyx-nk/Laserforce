@@ -1,8 +1,4 @@
-﻿using LocalStats;
-using LFStats;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Threading;
 
 namespace LF
 {
@@ -10,57 +6,36 @@ namespace LF
     {
         static void Main(string[] args)
         {
-            //TestStatsDatabase();
-            //TestLocalDatabase();
+            var menu = new Menu();
 
-            var synchroniser = new StatsSynchroniser();
-            //var synchroniser = new StatsSynchroniser(16);
-            synchroniser.Update();
-
-            Console.Write("Done");
-
-            Console.ReadKey();
-        }
-
-
-        #region Test Methods
-
-        private static void TestStatsDatabase()
-        {
-            var statsDatabase = new MySqlDatabase();
-            statsDatabase.OpenConnection();
-
-            var games = statsDatabase.GetCenterGames(16);
-            var players = statsDatabase.GetAllPlayers();
-            var playerGameScores = statsDatabase.GetPlayerGameScoresForCenter(16);
-
-            var dmihawk = players.FirstOrDefault(x => x.Name.ToLower() == "dmihawk");
-
-            var myScores = new List<PlayerGameScore>();
-
-            if (dmihawk != null)
+            // yeah yeah... it's an infinite loop
+            for (;;)
             {
-                myScores = statsDatabase.GetPlayerGameScoresForPlayer(16, dmihawk.Id);
+                var option = menu.ShowMainMenu();
+
+                switch (option)
+                {
+                    case MenuSelection.SyncLocal:
+                        var syncLocal = new StatsSynchroniser(16);
+                        syncLocal.Update();
+                        break;
+
+                    case MenuSelection.SyncGlobal:
+                        var syncGlobal = new StatsSynchroniser();
+                        syncGlobal.Update();
+                        break;
+
+                    case MenuSelection.ExecSvm:
+                        // TODO: Add IronPython
+                        break;
+
+                    case MenuSelection.Balancer:
+                        // TODO: Fire up program
+                        break;
+                }
+
+                Thread.Sleep(1000);
             }
-
-            statsDatabase.CloseConnection();
         }
-
-        private static void TestLocalDatabase()
-        {
-            var localDatabase = new SqliteDatabase(false);
-            localDatabase.Path = "..\\..\\stats.db";
-
-            localDatabase.OpenConnection();
-
-            var testPlayers = new List<Player>();
-            testPlayers.Add(new Player() { Id = 1, Name = "Test" });
-
-            localDatabase.AddPlayers(testPlayers);
-
-            localDatabase.CloseConnection();
-        }
-
-        #endregion Test Methods
     }
 }
