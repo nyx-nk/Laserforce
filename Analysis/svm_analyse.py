@@ -12,6 +12,7 @@ Author: Andrew Chen (andrewc6126@gmail.com)
 
 Dependencies:
 - scikit-learn module (called sklearn below because imported Python modules can't have - in their names)
+  Download from http://scikit-learn.org/stable/index.html
 """
 
 import sqlite3
