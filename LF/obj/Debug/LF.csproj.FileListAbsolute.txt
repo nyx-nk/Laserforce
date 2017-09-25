@@ -28,3 +28,24 @@ C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debu
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\Utilities.dll
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\Utilities.pdb
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\LF.exe.config
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\LF.exe
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\LF.pdb
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\AKLStats.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\EntityFramework.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\EntityFramework.SqlServer.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\LFStats.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\System.Data.SQLite.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\System.Data.SQLite.EF6.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\System.Data.SQLite.Linq.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\Utilities.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\MySql.Data.dll
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\AKLStats.pdb
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\LFStats.pdb
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\Utilities.pdb
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\EntityFramework.xml
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\EntityFramework.SqlServer.xml
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\bin\Debug\System.Data.SQLite.xml
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\obj\Debug\LF.csprojResolveAssemblyReference.cache
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\obj\Debug\LF.exe
+H:\Laserforce\Programming\Balancing Program\Laserforce\LF\obj\Debug\LF.pdb
