@@ -7,8 +7,8 @@
     <ProjectGuid>{79DBDB8B-E711-4889-8AE9-886A43266216}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AKLStats</RootNamespace>
-    <AssemblyName>AKLStats</AssemblyName>
+    <RootNamespace>LocalStats</RootNamespace>
+    <AssemblyName>LocalStats</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

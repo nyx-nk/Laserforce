@@ -75,9 +75,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AKLStats\AKLStats.csproj">
+    <ProjectReference Include="..\AKLStats\LocalStats.csproj">
       <Project>{79DBDB8B-E711-4889-8AE9-886A43266216}</Project>
-      <Name>AKLStats</Name>
+      <Name>LocalStats</Name>
     </ProjectReference>
     <ProjectReference Include="..\LFStats\LFStats.csproj">
       <Project>{884118B2-741E-42EA-B8D7-4445CCC5375D}</Project>

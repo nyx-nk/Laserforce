@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data.SQLite;
 using Utilities;
 
-namespace AKLStats
+namespace LocalStats
 {
     public class SqliteDatabase
     {
