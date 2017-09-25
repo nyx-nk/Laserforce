@@ -1,0 +1,32 @@
+﻿<LaserforceDataSet>
+  <Player>
+    <CodeName>Sneak</CodeName>
+    <Level>9</Level>
+    <IsRegular>true</IsRegular>
+    <IsPlaying>false</IsPlaying>
+  </Player>
+  <Player>
+    <CodeName>Virus</CodeName>
+    <Level>12</Level>
+    <IsRegular>true</IsRegular>
+    <IsPlaying>false</IsPlaying>
+  </Player>
+  <Player>
+    <CodeName>Guy Next Door</CodeName>
+    <Level>10</Level>
+    <IsRegular>true</IsRegular>
+    <IsPlaying>false</IsPlaying>
+  </Player>
+  <Player>
+    <CodeName>Leech</CodeName>
+    <Level>11</Level>
+    <IsRegular>true</IsRegular>
+    <IsPlaying>false</IsPlaying>
+  </Player>
+  <Player>
+    <CodeName>King</CodeName>
+    <Level>11</Level>
+    <IsRegular>true</IsRegular>
+    <IsPlaying>false</IsPlaying>
+  </Player>
+</LaserforceDataSet>
