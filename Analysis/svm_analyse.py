@@ -17,7 +17,7 @@ Dependencies:
 import sqlite3
 from sklearn import svm
 
-DB_STRING = "stats.db"
+DB_STRING = "AKLStats/local_stats.db"
 
 #Read or write to/from the database
 def accessDB(command, args=None):
@@ -65,7 +65,7 @@ def main():
             "medic_hits": player[12],
             "own_medic_hits": player[13],
             "lives_left": player[18],
-            "score": player[19],
+            #"score": player[19],
             "shot_opponents": player[25],
             "shot_team": player[26],
             #"rank": player[30],
