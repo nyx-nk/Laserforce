@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AKLStats", "AKLStats\AKLSta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analysis", "Analysis\Analysis.csproj", "{5BA39D90-221B-489C-80E7-376C48D64ED5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{1BA1F4E0-19E9-43E4-84D4-8F005C659E50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5BA39D90-221B-489C-80E7-376C48D64ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BA39D90-221B-489C-80E7-376C48D64ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BA39D90-221B-489C-80E7-376C48D64ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA1F4E0-19E9-43E4-84D4-8F005C659E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA1F4E0-19E9-43E4-84D4-8F005C659E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA1F4E0-19E9-43E4-84D4-8F005C659E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA1F4E0-19E9-43E4-84D4-8F005C659E50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
 using MySql.Data.MySqlClient;
-
+using Utilities;
 
 namespace LFStats
 {
     public class MySqlDatabase
     {
         #region Sql
+
+        private const string _getAllGamesSql = @"
+SELECT id, red_score, green_score, red_adj, green_adj, winner, red_eliminated, green_eliminated
+FROM lfstats.games";
 
         private const string _getGamesByCenterSql = @"
 SELECT id, red_score, green_score, red_adj, green_adj, winner, red_eliminated, green_eliminated
@@ -18,7 +22,14 @@ WHERE center_id = {0}";
 SELECT id, player_name
 FROM lfstats.players";
 
-        private const string _getAllPlayerGameScoresByCenterSql = @"
+        private const string _getAllPlayerGameScoresSql = @"
+SELECT id, player_name, team, position, shots_hit, shots_fired, times_zapped, times_missiled, missile_hits, nukes_activated,
+nukes_detonated, nukes_canceled, medic_hits, own_medic_hits, medic_nukes, scout_rapid, life_boost, ammo_boost, lives_left, score,
+shots_left, penalties, shot_3hit, elim_other_team, team_elim, own_nuke_cancels, shot_opponent, shot_team, missiled_opponent, 
+missiled_team, resupplies, rank, bases_destroyed, accuracy, mvp_points, sp_earned, sp_spent, game_id, player_id
+FROM lfstats.scorecards";
+
+        private const string _getPlayerGameScoresForCenterSql = @"
 SELECT id, player_name, team, position, shots_hit, shots_fired, times_zapped, times_missiled, missile_hits, nukes_activated,
 nukes_detonated, nukes_canceled, medic_hits, own_medic_hits, medic_nukes, scout_rapid, life_boost, ammo_boost, lives_left, score,
 shots_left, penalties, shot_3hit, elim_other_team, team_elim, own_nuke_cancels, shot_opponent, shot_team, missiled_opponent, 
@@ -26,7 +37,7 @@ missiled_team, resupplies, rank, bases_destroyed, accuracy, mvp_points, sp_earne
 FROM lfstats.scorecards
 WHERE center_id = {0}";
 
-        private const string _getPlayerGameScoresByPlayerSql = @"
+        private const string _getPlayerGameScoresForPlayerSql = @"
 SELECT id, player_name, team, position, shots_hit, shots_fired, times_zapped, times_missiled, missile_hits, nukes_activated,
 nukes_detonated, nukes_canceled, medic_hits, own_medic_hits, medic_nukes, scout_rapid, life_boost, ammo_boost, lives_left, score,
 shots_left, penalties, shot_3hit, elim_other_team, team_elim, own_nuke_cancels, shot_opponent, shot_team, missiled_opponent, 
@@ -91,45 +102,14 @@ WHERE center_id = {0}
             }
         }
 
-        public List<Game> GetGames(int centerId)
+        public List<Game> GetCenterGames(int centerId)
         {
-            if (Connection == null)
-            {
-                OpenConnection();
-            }
+            return GetGames(string.Format(_getGamesByCenterSql, centerId));
+        }
 
-            var query = string.Format(_getGamesByCenterSql, centerId);
-
-            var command = new MySqlCommand(query, Connection);
-
-            var games = new List<Game>();
-
-            try
-            {
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        games.Add(new Game()
-                        {
-                            Id = reader.GetInt32("id"),
-                            RedScore = reader.GetInt32("red_score"),
-                            GreenScore = reader.GetInt32("green_score"),
-                            RedAdjust = reader.GetInt32("red_adj"),
-                            GreenAdjust = reader.GetInt32("green_adj"),
-                            Winner = reader.GetString("winner"),
-                            RedEliminated = reader.GetBoolean("red_eliminated"),
-                            GreenEliminated = reader.GetBoolean("green_eliminated")
-                        });
-                    }
-                }
-            }
-            catch (MySqlException mse)
-            {
-                // TODO: Handle this
-            }
-
-            return games;
+        public List<Game> GetAllGames()
+        {
+            return GetGames(_getAllGamesSql);
         }
 
         public List<Player> GetAllPlayers()
@@ -160,41 +140,76 @@ WHERE center_id = {0}
             catch (MySqlException mse)
             {
                 // TODO: Handle this
+                Logger.Error(mse.Message);
             }
 
             return players;
         }
 
-        public List<PlayerGameScore> GetAllPlayerGameScores(int centerId)
+        public List<PlayerGameScore> GetAllPlayerGameScores()
         {
-            return GetPlayerGameScores(centerId, null);
+            return GetPlayerGameScores(_getAllPlayerGameScoresSql);
         }
 
-        public List<PlayerGameScore> GetSpecificPlayerGameScores(int centerId, int playerId)
+        public List<PlayerGameScore> GetPlayerGameScoresForCenter(int centerId)
         {
-            return GetPlayerGameScores(centerId, playerId);
+            return GetPlayerGameScores(string.Format(_getPlayerGameScoresForCenterSql, centerId));
+        }
+
+        public List<PlayerGameScore> GetPlayerGameScoresForPlayer(int centerId, int playerId)
+        {
+            return GetPlayerGameScores(string.Format(_getPlayerGameScoresForPlayerSql, centerId, playerId));
         }
 
         #endregion Methods
 
         #region Private Methods
 
-        private List<PlayerGameScore> GetPlayerGameScores(int centerId, int? playerId)
+        private List<Game> GetGames(string query)
         {
             if (Connection == null)
             {
                 OpenConnection();
             }
 
-            string query = string.Empty;
+            var command = new MySqlCommand(query, Connection);
 
-            if (playerId.HasValue)
+            var games = new List<Game>();
+
+            try
             {
-                query = string.Format(_getPlayerGameScoresByPlayerSql, centerId, playerId);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        games.Add(new Game()
+                        {
+                            Id = reader.GetInt32("id"),
+                            RedScore = reader.GetInt32("red_score"),
+                            GreenScore = reader.GetInt32("green_score"),
+                            RedAdjust = reader.GetInt32("red_adj"),
+                            GreenAdjust = reader.GetInt32("green_adj"),
+                            Winner = reader.GetString("winner"),
+                            RedEliminated = reader.GetBoolean("red_eliminated"),
+                            GreenEliminated = reader.GetBoolean("green_eliminated")
+                        });
+                    }
+                }
             }
-            else
+            catch (MySqlException mse)
             {
-                query = string.Format(_getAllPlayerGameScoresByCenterSql, centerId);
+                // TODO: Handle this
+                Logger.Error(mse.Message);
+            }
+
+            return games;
+        }
+
+        private List<PlayerGameScore> GetPlayerGameScores(string query)
+        {
+            if (Connection == null)
+            {
+                OpenConnection();
             }
 
             var command = new MySqlCommand(query, Connection);
@@ -255,7 +270,7 @@ WHERE center_id = {0}
             catch (MySqlException mse)
             {
                 // TODO: Handle this
-                var breakHere = true;
+                Logger.Error(mse.Message);
             }
 
             return playerGameScores;

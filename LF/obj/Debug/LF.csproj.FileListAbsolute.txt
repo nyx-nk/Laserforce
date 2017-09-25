@@ -26,3 +26,5 @@ C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debu
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\EntityFramework.xml
 C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\Utilities.dll
+C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\LF\bin\Debug\Utilities.pdb

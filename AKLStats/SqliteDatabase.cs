@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
+using Utilities;
 
 namespace AKLStats
 {
@@ -33,9 +34,16 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
 
         #region Constructors
 
-        public SqliteDatabase()
+        public SqliteDatabase(bool useGlobal)
         {
-            Path = ConfigurationManager.AppSettings["SqlitePath"];
+            if (useGlobal)
+            {
+                Path = ConfigurationManager.AppSettings["GlobalSqlitePath"];
+            }
+            else
+            {
+                Path = ConfigurationManager.AppSettings["LocalSqlitePath"];
+            }
         }
 
         public SqliteDatabase(string path)
@@ -50,7 +58,7 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
         public string Path { get; set; }
         public string ConnectionString
         {
-            get { return $@"Data Source=C:\Users\GHolmes\Documents\Visual Studio 2015\Projects\LF\Laserforce\AKLStats\stats.db; Version=3;"; }
+            get { return $@"Data Source={Path}; Version=3;"; }
         }
         public SQLiteConnection Connection { get; private set; }
 
@@ -100,6 +108,7 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
                 catch (SQLiteException sle)
                 {
                     // TODO: Handle this
+                    Logger.Error(sle.Message);
                 }
             }
         }
@@ -116,7 +125,7 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
             foreach (var player in players)
             {
                 // TODO: Guard this against SQL injections
-                query = string.Format(_insertPlayerSql, player.Id, player.Name.Replace("'", "\'\'"));
+                query = string.Format(_insertPlayerSql, player.Id, player.Name.ToSqlString());
 
                 try
                 {
@@ -126,6 +135,7 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
                 catch (SQLiteException sle)
                 {
                     // TODO: Handle this
+                    Logger.Error(sle.Message);
                 }
             }
         }
@@ -142,7 +152,7 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
             foreach (var pgs in playerGameScores)
             {
                 // TODO: Guard this against SQL injections
-                query = string.Format(_insertPlayerGameScoreSql, pgs.Id, pgs.PlayerName, pgs.Team, pgs.Position, pgs.ShotsHit,
+                query = string.Format(_insertPlayerGameScoreSql, pgs.Id, pgs.PlayerName.ToSqlString(), pgs.Team, pgs.Position, pgs.ShotsHit,
                                         pgs.ShotsFired, pgs.TimesZapped, pgs.TimesMissiled, pgs.MissileHits, pgs.NukesActivated,
                                         pgs.NukesDetonated, pgs.NukesCancelled, pgs.MedicHits, pgs.OwnMedicHits, pgs.MedicNukes,
                                         pgs.ScoutRapidFires, pgs.LivesBoosts, pgs.AmmoBoosts, pgs.LivesLeft, pgs.Score, pgs.Penalties,
@@ -159,6 +169,7 @@ VALUES ({0}, '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}
                 catch (SQLiteException sle)
                 {
                     // TODO: Handle this
+                    Logger.Error(sle.Message);
                 }
             }
         }

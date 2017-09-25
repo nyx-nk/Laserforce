@@ -13,7 +13,8 @@ namespace LF
             //TestStatsDatabase();
             //TestLocalDatabase();
 
-            var synchroniser = new StatsSynchroniser(16);
+            var synchroniser = new StatsSynchroniser();
+            //var synchroniser = new StatsSynchroniser(16);
             synchroniser.Update();
 
             Console.Write("Done");
@@ -29,9 +30,9 @@ namespace LF
             var statsDatabase = new MySqlDatabase();
             statsDatabase.OpenConnection();
 
-            var games = statsDatabase.GetGames(16);
+            var games = statsDatabase.GetCenterGames(16);
             var players = statsDatabase.GetAllPlayers();
-            var playerGameScores = statsDatabase.GetAllPlayerGameScores(16);
+            var playerGameScores = statsDatabase.GetPlayerGameScoresForCenter(16);
 
             var dmihawk = players.FirstOrDefault(x => x.Name.ToLower() == "dmihawk");
 
@@ -39,7 +40,7 @@ namespace LF
 
             if (dmihawk != null)
             {
-                myScores = statsDatabase.GetSpecificPlayerGameScores(16, dmihawk.Id);
+                myScores = statsDatabase.GetPlayerGameScoresForPlayer(16, dmihawk.Id);
             }
 
             statsDatabase.CloseConnection();
@@ -47,7 +48,7 @@ namespace LF
 
         private static void TestLocalDatabase()
         {
-            var localDatabase = new SqliteDatabase();
+            var localDatabase = new SqliteDatabase(false);
             localDatabase.Path = "..\\..\\stats.db";
 
             localDatabase.OpenConnection();

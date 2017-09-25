@@ -1,6 +1,8 @@
 ﻿using AKLStats;
 using LFStats;
 using System;
+using System.Collections.Generic;
+using Utilities;
 
 namespace LF
 {
@@ -8,12 +10,21 @@ namespace LF
     {
         private MySqlDatabase _mySqlDatabase;
         private SqliteDatabase _sqliteDatabase;
-        private int _centerId;
+        private bool _useGlobal;
+        private int? _centerId;
+
+        public StatsSynchroniser()
+        {
+            _mySqlDatabase = new MySqlDatabase();
+            _sqliteDatabase = new SqliteDatabase(true);
+            _useGlobal = true;
+        }
 
         public StatsSynchroniser(int centerId)
         {
             _mySqlDatabase = new MySqlDatabase();
-            _sqliteDatabase = new SqliteDatabase();
+            _sqliteDatabase = new SqliteDatabase(false);
+            _useGlobal = false;
             _centerId = centerId;
         }
 
@@ -32,6 +43,7 @@ namespace LF
             catch (Exception ex)
             {
                 // TODO: Handle this
+                Logger.Error(ex.Message);
 
                 return false;
             }
@@ -57,7 +69,15 @@ namespace LF
             // Get all the games from the MySQL database
             _mySqlDatabase.OpenConnection();
             Console.WriteLine("Retrieving games...");
-            var games = _mySqlDatabase.GetGames(_centerId);
+            var games = new List<Game>();
+            if (_useGlobal)
+            {
+                games = _mySqlDatabase.GetAllGames();
+            }
+            else
+            {
+                games = _mySqlDatabase.GetCenterGames(_centerId.Value);
+            }
             _mySqlDatabase.CloseConnection();
 
             // Save all the games to the SQLite database
@@ -72,7 +92,15 @@ namespace LF
             // Get all the player game scores from the MySQL database
             _mySqlDatabase.OpenConnection();
             Console.WriteLine("Retrieving player game scores...");
-            var playerGameScores = _mySqlDatabase.GetAllPlayerGameScores(_centerId);
+            var playerGameScores = new List<PlayerGameScore>();
+            if (_useGlobal)
+            {
+                playerGameScores = _mySqlDatabase.GetAllPlayerGameScores();
+            }
+            else
+            {
+                playerGameScores = _mySqlDatabase.GetPlayerGameScoresForCenter(_centerId.Value);
+            }
             _mySqlDatabase.CloseConnection();
 
             // Save all the player game scores to the SQLite database
